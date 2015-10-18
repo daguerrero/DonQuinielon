@@ -1,9 +1,6 @@
 var http = require('http');
-var server = http.createServer();
-function control(petic, resp) {
-resp.writeHead(200, {'content-type': 'text/plain'});
-resp.write('Hola, Mundo!');
-resp.end();
-}
-server.on('request', control);
-server.listen(8080);
+var port = process.env.port || 1337;
+http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hola Mundo\n');
+}).listen(port);
